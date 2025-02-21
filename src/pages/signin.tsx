@@ -9,9 +9,19 @@ import { signInWithGoogle, signInWithCredentials } from '../firebase/auth';
 
 function Info() {
   return (
-    <Alert severity="info">
-        This is a demo of the ISPH Swimming Portal. Please sign in to continue.
-    </Alert>
+      <Alert severity="info">
+        This is a demo of the ISPH Swimming Portal.
+        Use the following credentials to sign in:
+        <br/>
+        <br/>
+        Email: &nbsp;
+        <strong>quangngo.nz@gmail.com</strong>
+        <br/>
+        Password: &nbsp;
+        <strong>Isph2025</strong>
+        <br/>
+
+      </Alert>
   );
 }
 
@@ -36,7 +46,7 @@ export default function SignIn() {
       signIn={async (provider, formData, callbackUrl) => {
         let result;
 
-        const remember = formData.get('remember') as boolean;
+        const remember = formData?.get('remember') as boolean;
         localStorage.setItem('persistence', remember ? 'true' : 'false');
 
         try {
@@ -78,7 +88,7 @@ export default function SignIn() {
           defaultValue: 'quangngo.nz@gmail.com',
         },
         passwordField: {
-          defaultValue: 'Isph2024',
+          defaultValue: 'Isph2025',
         },
       }}
     />

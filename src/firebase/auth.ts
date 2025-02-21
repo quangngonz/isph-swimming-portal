@@ -1,14 +1,13 @@
 import {
-  GoogleAuthProvider,
-  GithubAuthProvider,
-  signInWithPopup,
-  setPersistence,
+  browserLocalPersistence,
   browserSessionPersistence,
-    browserLocalPersistence,
+  GoogleAuthProvider,
+  setPersistence,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
 } from 'firebase/auth';
-import { firebaseAuth } from './firebaseConfig';
+import {firebaseAuth} from './firebaseConfig';
 
 const googleProvider = new GoogleAuthProvider();
 
