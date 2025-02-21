@@ -7,11 +7,10 @@ import { Navigate, useNavigate } from 'react-router';
 import { useSession, type Session } from '../SessionContext';
 import { signInWithGoogle, signInWithCredentials } from '../firebase/auth';
 
-function DemoInfo() {
+function Info() {
   return (
     <Alert severity="info">
-      You can use <strong>toolpad-demo@mui.com</strong> with the password <strong>@demo1</strong> to
-      test
+        This is a demo of the ISPH Swimming Portal. Please sign in to continue.
     </Alert>
   );
 }
@@ -73,7 +72,7 @@ export default function SignIn() {
           return { error: error instanceof Error ? error.message : 'An error occurred' };
         }
       }}
-      slots={{ subtitle: DemoInfo }}
+      slots={{ subtitle: Info }}
       slotProps={{
         emailField: {
           defaultValue: 'quangngo.nz@gmail.com',
