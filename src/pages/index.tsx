@@ -7,7 +7,7 @@ import {stages} from "../data/stages";
 
 import ProgressTimeline from "../components/progressTimeline/progressTimeline";
 
-export default function DashboardPage() {
+export default function MainPage() {
   return (
     <Box>
       <Typography variant="h1" align="center">Welcome to the ISPH Swimming Portal!</Typography>
