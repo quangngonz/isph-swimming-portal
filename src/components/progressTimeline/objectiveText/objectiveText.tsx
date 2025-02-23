@@ -47,7 +47,7 @@ const ObjectiveName = ({ name, handleOpen }: { name: string; handleOpen: React.D
             variant="body1"
             component="a"
             href="#"
-            onClick={(e) => {
+            onClick={(e: { preventDefault: () => void; }) => {
                 e.preventDefault();
                 handleOpen(true);
             }}
