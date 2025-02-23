@@ -1,40 +1,40 @@
-import {Backdrop, Box, Fade, Modal, Paper, Typography} from "@mui/material";
+import {Box, Dialog, DialogContent, DialogTitle, IconButton, Typography} from "@mui/material";
 import React, {useState} from "react";
+import CloseIcon from "@mui/icons-material/Close";
 
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: '80%',
-    maxWidth: '800px'
-};
-
-const TutorialModal = ({ tutorial_link, open, handleClose }: { tutorial_link: string, open: boolean, handleClose: () => void }) => {
+const TutorialDialog = ({ tutorial_link, open, handleClose }: { tutorial_link: string; open: boolean; handleClose: () => void }) => {
     return (
-        <Modal
-            aria-labelledby="transition-modal-title"
-            aria-describedby="transition-modal-description"
+        <Dialog
             open={open}
             onClose={handleClose}
-            closeAfterTransition
-            slots={{ backdrop: Backdrop }}
-            slotProps={{ backdrop: { timeout: 500 } }}
+            maxWidth="md"
+            fullWidth
+            aria-labelledby="tutorial-dialog-title"
         >
-            <Fade in={open}>
-                <Box sx={style}>
-                    <Paper style={{padding: '20px'}} >
-                        <Typography id="transition-modal-title" variant="h6" component="h2" sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '20px' }}>
-                            Tutorial
-                            <Box component="button" onClick={handleClose} sx={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '1.5rem'}}>
-                                &times;
-                            </Box>
-                        </Typography>
-                        <iframe src={tutorial_link} title="tutorial" width="100%" height="500" style={{ border: 'none', borderRadius: '20px' }}/>
-                    </Paper>
-                </Box>
-            </Fade>
-        </Modal>
+            <DialogTitle
+                id="tutorial-dialog-title"
+                sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+            >
+                Tutorial
+                <IconButton
+                    edge="end"
+                    color="inherit"
+                    onClick={handleClose}
+                    aria-label="close"
+                >
+                    <CloseIcon />
+                </IconButton>
+            </DialogTitle>
+            <DialogContent dividers>
+                <iframe
+                    src={tutorial_link}
+                    title="tutorial"
+                    width="100%"
+                    height="500"
+                    style={{ border: 'none', borderRadius: '4px' }}
+                />
+            </DialogContent>
+        </Dialog>
     );
 };
 
@@ -58,7 +58,6 @@ const ObjectiveName = ({ name, handleOpen }: { name: string; handleOpen: React.D
     );
 };
 
-
 const ObjectiveText = ({ name, tutorial_link }: { name: string, tutorial_link: string }) => {
     const [open, setOpen] = useState(false);
 
@@ -68,7 +67,7 @@ const ObjectiveText = ({ name, tutorial_link }: { name: string, tutorial_link: s
     return (
         <Box>
             <ObjectiveName name={name} handleOpen={handleOpen} />
-            <TutorialModal tutorial_link={tutorial_link} open={open} handleClose={handleClose} />
+            <TutorialDialog tutorial_link={tutorial_link} open={open} handleClose={handleClose} />
         </Box>
     );
 };
