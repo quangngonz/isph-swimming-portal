@@ -67,7 +67,8 @@ with open('src/data/stages.ts', 'w') as file:
         for objective in output_data[stage]:
             file.write('            {\n')
             file.write(f'                name: "{objective}",\n')
-            file.write('                completed: false\n')
+            file.write('                completed: false,\n')
+            file.write('                tutorial_link: "https://www.youtube.com/embed/A59iid-HvxQ?si=KFDcaS2DPIPvtyxz",\n')
             file.write('            },\n')
 
         file.write('        ]\n')

@@ -1,6 +1,7 @@
 interface Objective {
     name: string;
     completed: boolean;
+    tutorial_link: string;
 }
 
 interface Level {
